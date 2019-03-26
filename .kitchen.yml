@@ -1,0 +1,21 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+  product_name: chef
+  product_version: 12.16.42
+
+platforms:
+  - name: centos-7.6
+    driver:
+      box: bento/centos-7.6
+    run_list:
+      - recipe[jlosito-elasticsearch::default]
+
+suites:
+  - name: default
+  - name: upgrade
+    provisioner:
+      product_version: 13.1.31
